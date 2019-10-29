@@ -5,17 +5,18 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 // importing files
-const routes = require("./routes");
+//const routes = require("./routes");
 
 // Define Global Variables
 const app = express();
 const log = console.log;
-const PORT = process.env.PORT || 8080; // Step 1
+const PORT = process.env.PORT || 4000; // Step 1
 
 // Step 2
 mongoose.connect(
   process.env.MONGODB_URI ||
-    "mongodb://katielamber02:begginYou6342@ds161740.mlab.com:61740/deploy1",
+    // "mongodb://katielamber02:begginYou6342@ds161740.mlab.com:61740/deploy1",
+    "mongodb://katielamber02:begginYou6342@ds141654.mlab.com:41654/db-gql",
 
   {
     useNewUrlParser: true
@@ -28,7 +29,14 @@ mongoose.connection.once("open", () => {
 // Configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/", routes);
+//app.use("/", routes);
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema,
+    graphiql: true
+  })
+);
 
 // Step 3
 if (process.env.NODE_ENV === "production") {
