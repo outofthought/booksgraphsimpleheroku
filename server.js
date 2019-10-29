@@ -1,8 +1,11 @@
 // Importing Modules
-const mongoose = require("mongoose");
 const express = require("express");
-const bodyParser = require("body-parser");
+const graphqlHTTP = require("express-graphql");
+const schema = require("./schema/schema");
+const mongoose = require("mongoose");
+const cors = require("cors");
 const path = require("path");
+const bodyParser = require("body-parser");
 
 // importing files
 //const routes = require("./routes");
