@@ -19,9 +19,7 @@ const PORT = process.env.PORT || 4000; // Step 1
 
 // Step 2
 mongoose.connect(
-  process.env.MONGODB_URI ||
-    // "mongodb://katielamber02:begginYou6342@ds161740.mlab.com:61740/deploy1",
-    "mongodb://katielamber02:begginYou6342@ds141654.mlab.com:41654/db-gql",
+  process.env.MONGODB_URI,
 
   {
     useNewUrlParser: true
